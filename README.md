@@ -1,12 +1,12 @@
-# FrequencyDependentSchroederAllpass
-Accompanying code for "Frequency-Dependent Schroeder Allpass Filters" submitted to Applied Science
+# Frequency-Dependent Schroeder Allpass Filters
+Accompanying code for "Frequency-Dependent Schroeder Allpass Filters" submitted to Applied Science\
 Reproduction of Everything
 
-Author: Dr.-Ing. Sebastian Jiro Schlecht
-Aalto University, Finland
-email address: sebastian.schlecht@aalto.fi
-Website: sebastianjiroschlecht.com
-1 December 2019; Last revision: 1 December 2019
+Author: Dr.-Ing. Sebastian Jiro Schlecht\
+Aalto University, Finland\
+email address: sebastian.schlecht@aalto.fi\
+Website: sebastianjiroschlecht.com\
+1 December 2019; Last revision: 1 December 2019\
 
 ## Instruction
 
