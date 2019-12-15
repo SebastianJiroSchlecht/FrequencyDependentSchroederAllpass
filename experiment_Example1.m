@@ -32,7 +32,7 @@ gainZeros = roots(gainB);
 
 %% plot
 plotWidth = '6.4cm';
-plotConfig = {'type','standardSingleColumn','width',plotWidth};
+plotConfig = {'type','standardSingleColumn','width',plotWidth,'extraAxisOptions',{'yticklabel style={/pgf/number format/fixed,/pgf/number format/precision=5},scaled y ticks=false'}};
 
 %% Figure 6(a)
 figure(1); hold on; grid on;
@@ -41,38 +41,38 @@ xlabel('Time [samples]')
 ylabel('Amplitude [linear]')
 axis([-10 400 -0.5 1])
 
-matlab2tikz_sjs('./../graphics/Example_IR.tikz',plotConfig{:})
+matlab2tikz_sjs('./graphics/Example_IR.tikz',plotConfig{:})
 
 %% Figure 6(b)
 figure(2); hold on; grid on;
-plot((angle(allpassPoles)),mag2db(abs(allpassPoles)),'x'); 
+plot((angle(allpassPoles))/pi,mag2db(abs(allpassPoles)),'x'); 
 ax = gca; ax.ColorOrderIndex = 1;
-plot(-angle(1./allpassPoles),mag2db(abs(1./allpassPoles)),'o');
-plot(w,mag2db(abs(gainH)) / delayInSamples(end));
-xlabel('Angular Frequency [radians]');
+plot(-angle(1./allpassPoles)/pi,mag2db(abs(1./allpassPoles)),'o');
+plot(w/pi,mag2db(abs(gainH)) / delayInSamples(end));
+xlabel('Normalized Frequency [$\pi$ rad/sample]');
 ylabel('Magnitude [dB]');
-axis([0 pi -0.03 0.03])
+axis([0 1 -0.03 0.03])
 
-matlab2tikz_sjs('./../graphics/Example_Poles.tikz',plotConfig{:})
+matlab2tikz_sjs('./graphics/Example_Poles.tikz',plotConfig{:})
 
 %% Figure 6(c)
 figure(3); hold on; grid on;
-plot(w,gd);
-xlabel('Angular Frequency [radians]');
+plot(w/pi,gd);
+xlabel('Normalized Frequency [$\pi$ rad/sample]');
 ylabel('Group Delay [samples]');
-axis([0 pi 0 4000])
+axis([0 1 0 4000])
 
-matlab2tikz_sjs('./../graphics/Example_GroupDelay.tikz',plotConfig{:})
+matlab2tikz_sjs('./graphics/Example_GroupDelay.tikz',plotConfig{:})
 
 %% %% Figure 6(d)
 figure(4); hold on; grid on;
 
-plot(angle(gainPoles),mag2db(abs(gainPoles)),'x');
+plot(angle(gainPoles)/pi,mag2db(abs(gainPoles)),'x');
 ax = gca; ax.ColorOrderIndex = 1;
-plot(angle(gainZeros),mag2db(abs(gainZeros)),'o');
-plot(w,mag2db(abs(gainH)))
-xlabel('Angular Frequency [radians]');
+plot(angle(gainZeros)/pi,mag2db(abs(gainZeros)),'o');
+plot(w/pi,mag2db(abs(gainH)))
+xlabel('Normalized Frequency [$\pi$ rad/sample]');
 ylabel('Magnitude [dB]');
-axis([0 pi -3 3.3])
+axis([0 1 -3 3.3])
 
-matlab2tikz_sjs('./../graphics/Example_FilterZPlane.tikz',plotConfig{:})
+matlab2tikz_sjs('./graphics/Example_FilterZPlane.tikz',plotConfig{:})

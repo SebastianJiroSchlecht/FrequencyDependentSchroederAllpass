@@ -36,7 +36,8 @@ poles = roots(a);
 
 %% plot
 plotWidth = '6.4cm';
-plotConfig = {'type','standardSingleColumn','width',plotWidth};
+plotConfig = {'type','standardSingleColumn','width',plotWidth,'extraAxisOptions',{'yticklabel style={/pgf/number format/fixed,/pgf/number format/precision=5},scaled y ticks=false'}};
+
 
 % Figure not used
 figure(1); hold on; grid on;
@@ -50,20 +51,20 @@ verticalX = [angle(poles),angle(poles)].';
 verticalY = [0*angle(poles),angle(poles)*0-0.03].';
 
 figure(2); hold on; grid on;
-plot(angle(poles),mag2db(abs(poles)),'x')
-plot(w,mag2db(abs(h)) / delayInSamples(end))
-reduce_plot(verticalX,verticalY,'k:')
-xlabel('Angular Frequency [radians]');
+plot(angle(poles)/pi,mag2db(abs(poles)),'x')
+plot(w/pi,mag2db(abs(h)) / delayInSamples(end))
+reduce_plot(verticalX/pi,verticalY,'k:')
+xlabel('Normalized Frequency [$\pi$ rad/sample]');
 ylabel('Magnitude [dB]');
-axis([0 pi -0.015 0])
-matlab2tikz_sjs('./../graphics/Warp_Poles.tikz',plotConfig{:})
+axis([0 1 -0.015 0])
+matlab2tikz_sjs('./graphics/Warp_Poles.tikz',plotConfig{:})
 
 % % Figure 6(b)
 figure(3); hold on; grid on;
-plot(w,gd);
-xlabel('Angular Frequency [radians]');
+plot(w/pi,gd);
+xlabel('Normalized Frequency [$\pi$ rad/sample]');
 ylabel('Group Delay [samples]');
-axis([0 pi 0 200])
-matlab2tikz_sjs('./../graphics/Warp_GroupDelay.tikz',plotConfig{:})
+axis([0 1 0 200])
+matlab2tikz_sjs('./graphics/Warp_GroupDelay.tikz',plotConfig{:})
 
 

@@ -54,7 +54,7 @@ stem(smp2ms(0:length(ir(range))-1,fs),ir(range),'filled','MarkerSize',2)
 xlabel('Time [ms]')
 ylabel('Amplitude [linear]')
 axis([-0.1 30 -0.4 0.4])
-matlab2tikz_sjs('./../graphics/Decorrelator_IR.tikz',plotConfig{:})
+matlab2tikz_sjs('./graphics/Decorrelator_IR.tikz',plotConfig{:})
 
 % Figure 8(b)
 figure(2); hold on; grid on;
@@ -66,20 +66,23 @@ set(gca,'XScale','log');
 xlabel('Frequency [Hz]');
 ylabel('Reverberation Time [ms]');
 axis([100 fs/2 0 100])
-matlab2tikz_sjs('./../graphics/Decorrelator_Poles.tikz',plotConfig{:})
+matlab2tikz_sjs('./graphics/Decorrelator_Poles.tikz',plotConfig{:})
 
 % Figure 8(c)
 figure(3); hold on; grid on;
 totalGroupDelay = w*0;
+logx = logspace(log10(100),log10(fs/2),1000);
 for it = 1:numStages
-   reduce_plot(angle2freq(w,fs), smp2ms(groupDelay{it},fs),'--'); 
+   xx = interp1( angle2freq(w,fs), smp2ms(groupDelay{it},fs), logx);
+   plot(logx, xx,'--'); 
    totalGroupDelay = totalGroupDelay + groupDelay{it};
 end
-reduce_plot(angle2freq(w,fs), smp2ms(totalGroupDelay,fs)); 
+xx = interp1( angle2freq(w,fs), smp2ms(totalGroupDelay,fs), logx);
+plot(logx, xx); 
 set(gca,'XScale','log');
 xlabel('Frequency [Hz]');
 ylabel('Group Delay [ms]');
 axis([100 fs/2 0 30])
-matlab2tikz_sjs('./../graphics/Decorrelator_GroupDelay.tikz',plotConfig{:})
+matlab2tikz_sjs('./graphics/Decorrelator_GroupDelay.tikz',plotConfig{:})
 
 

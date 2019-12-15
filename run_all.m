@@ -11,6 +11,7 @@ clear; clc; close all;
 
 restoredefaultpath;
 addpath('./auxiliary');
+addpath(genpath('./../matlab2tikz_wrapper'))
 
 experiment_Example1
 experiment_Example2
