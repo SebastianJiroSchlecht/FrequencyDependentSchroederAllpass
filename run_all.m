@@ -14,7 +14,8 @@ addpath('./auxiliary');
 addpath(genpath('./../matlab2tikz_wrapper'))
 
 experiment_Example1
-experiment_Example2
+experiment_Example2 % removed from published version
+experiment_ExampleDahl
 experiment_SchroederDecorrelator
 
 experiment_stereoDecorrelator
