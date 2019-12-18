@@ -6,7 +6,7 @@ Author: Dr.-Ing. Sebastian Jiro Schlecht\
 Aalto University, Finland\
 email address: sebastian.schlecht@aalto.fi\
 Website: sebastianjiroschlecht.com\
-1 December 2019; Last revision: 1 December 2019\
+1 December 2019
 
 ## Instruction
 
